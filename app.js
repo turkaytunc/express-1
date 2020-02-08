@@ -12,6 +12,10 @@ app.get("/api/members", (req, res) => {
   res.json(members.data);
 });
 
+app.get("/api/members/:name", (req, res) => {
+  res.json(members.data.filter(item => item.name === req.params.name));
+});
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(PORT, () => {
